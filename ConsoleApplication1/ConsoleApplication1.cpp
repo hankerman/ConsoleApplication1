@@ -1,54 +1,51 @@
 ﻿#include <iostream>
+#include <stdio.h>
+#include <string.h>
+#include <string>
 using namespace std;
 
-void fill(int arr[], int size) {
-	for (int i = 0; i < size; i++) {
-		arr[i] = rand() % 100;
-	}
-}
-void print(int arr[], int size) {
-	for (int i = 0; i < size; i++) {
-		cout << arr[i] << " ";
-	}
-	cout << endl;
-}
 
-
-
-int main() {
-	
-	const int size = 10, size2 = 20;
-	int arrA[size], arrB[size2], arr1[size + size2], arr2[size], arr3[size], arr4[size], arr5[size];
-	int* parrA = arrA;
-	int* parrB = arrB;
-	int* parr1 = arr1;
-	int* parr2 = arr2;
-	fill(arrA, size);
-	fill(arrB, size2);
-	cout << "arrA ";
-	print(arrA, size);
-	cout << "arrB ";
-	print(arrB, size2);
-	
-	for (int i = 0; i < size; i++) {
-		parr1[i] = parrA[i];
-	}
-	for (int i = 0; i < size2; i++) {
-		parr1[i + size] = parrB[i];
-	}
-	cout << "arr1 - ";
-	print(arr1, size + size2);
+void main() 
+{
+	const int size = 10;
+	string files[size];
 
 	for (int i = 0; i < size; i++) {
-		int temp = parrA[i];
-		for (int j = 0; j < size2; j++) {
-			if (temp == parrB[j]) {
-
-			}
+		if (i < 4) {
+			files[i] = "file" + to_string(i);
+			files[i] += ".txt";
+		}
+		else if (i < 8) {
+			files[i] = "file" + to_string(i);
+			files[i] += ".png";
+		}
+		else {
+			files[i] = "file" + to_string(i);
+			files[i] += ".docx";
 		}
 	}
 	
-	print(arr2, size);
+	for (string s : files) {
+		cout << s << endl;
+	}
 	
-	return 0;
+	cout << ".txt"<< endl;
+	for (string& s : files) {
+
+		if (!s.find(".docx")) {
+			cout << s << endl;
+		}
+	}
+	cout << endl;
+	for (string& s : files) {
+
+		if (s.find(".txt")) {
+			s.erase(s.find("."));
+			s += ".docx";
+		}
+	}
+
+	for (string s : files) {
+		cout << s << endl;
+	}
 }
