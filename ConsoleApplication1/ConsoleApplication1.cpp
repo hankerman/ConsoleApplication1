@@ -32,14 +32,14 @@ void main()
 	cout << ".txt"<< endl;
 	for (string& s : files) {
 
-		if (!s.find(".docx")) {
+		if (s.substr(s.find(".")) == ".txt") {
 			cout << s << endl;
 		}
 	}
 	cout << endl;
 	for (string& s : files) {
 
-		if (s.find(".txt")) {
+		if (s.substr(s.find(".")) == ".txt") {
 			s.erase(s.find("."));
 			s += ".docx";
 		}
@@ -48,4 +48,5 @@ void main()
 	for (string s : files) {
 		cout << s << endl;
 	}
+	
 }
